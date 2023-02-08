@@ -17,39 +17,57 @@
         android:labelFor="@+id/quantity"
 
          />
-    <Button
-        android:id="@+id/decrement"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:text="@string/plus"
-        android:gravity="center"
-        android:textSize="15sp"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="15dp"
-        android:onClick="increaseOrder"
-        />
-    <TextView
-        android:id="@+id/quantity"
-        android:layout_width="wrap_content"
+    <!--this is an embedded XML that create a orizontal layout-->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/quantityValue"
-        android:textSize="16sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        >
+        <Button
+            android:id="@+id/increment"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="@string/minus"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginBottom="10dp"
+            android:onClick="decreaseOrder"
+            />
 
-        />
-    <Button
-        android:id="@+id/increment"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:text="@string/minus"
-        android:gravity="center"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="15dp"
-        android:onClick="decreaseOrder"
-        />
+        <TextView
+            android:id="@+id/quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/quantityValue"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            />
+
+        <Button
+            android:id="@+id/decrement"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="@string/plus"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textSize="15sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginBottom="10dp"
+            android:onClick="increaseOrder"
+            />
+    </LinearLayout>
+
     <TextView
         android:id="@+id/price"
         android:layout_width="wrap_content"

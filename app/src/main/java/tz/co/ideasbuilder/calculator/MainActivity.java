@@ -1,5 +1,6 @@
 package tz.co.ideasbuilder.calculator;
 
+import android.annotation.SuppressLint;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.os.Bundle;
@@ -24,14 +25,11 @@ public class MainActivity extends AppCompatActivity {
         showDecrease();
     }
     public void submitOrder(View view){
+        displayPrice(quantity);
+    }
 
-    }
-// the quantity display method is declaired here
-    public void display(int unit) {
-        TextView content = (TextView) findViewById(R.id.quantity);
-        content.setText(" " + unit);
-    }
     //the price method is declared here
+    @SuppressLint("SetTextI18n")
     public void displayPrice(int unit){
         int unitPrice = 5;
         //the line below captures a textview that is to be affected by using findViewById
@@ -53,17 +51,19 @@ public class MainActivity extends AppCompatActivity {
             return currentOrderSize -= 1;
         }
     }
+    @SuppressLint("SetTextI18n")
     public void showIncrease(){
         quantity = increase();
         TextView content = (TextView) findViewById(R.id.quantity);
         content.setText(" " +  quantity);
-        displayPrice(quantity);
+
     }
+    @SuppressLint("SetTextI18n")
     public void showDecrease(){
         quantity = decrease();
         TextView content = (TextView) findViewById(R.id.quantity);
         content.setText(" " +  quantity);
-        displayPrice(quantity);
+
     }
 }
 

@@ -1,13 +1,16 @@
 <resources>
-    <string name="app_name">Just Java</string>
+    <string name="app_name">Java</string>
     <string name="title">Just Java</string>
     <string name="quantityValue">0</string>
     <string name="order">Order</string>
-    <string name="price">No order is placed</string>
+    <string name="price"> </string>
     <string name="minus">-</string>
     <string name="plus">+</string>
     <string name="priceLabel">Order Summary</string>
     <string name="toppingLabel">Toppings</string>
     <string name="whipped_cream">Whipped Cream</string>
     <string name="choco">Chocolate</string>
+    <string name="java_logo">java logo</string>
+    <string name="nameLabel">Name</string>
+    <string name="exampleName">John Doe</string>
 </resources>

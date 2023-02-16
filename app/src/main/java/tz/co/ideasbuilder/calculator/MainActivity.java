@@ -1,12 +1,16 @@
 package tz.co.ideasbuilder.calculator;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.NumberFormat;
 
@@ -24,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 //this method is called when the button is clicked on the front end of the website
     int currentOrderSize = 0;
     int quantity;
-    String message;
+    String message,name,orderSummary,subject,mail,email;
     long unitPrice = 5;
 
     public void increaseOrder(View view){
@@ -34,32 +38,62 @@ public class MainActivity extends AppCompatActivity {
     public void decreaseOrder(View view){
         showDecrease();
     }
+
+    //after this button has been clicked the intent will be initialized
+
     public void submitOrder(View view){
         message = setTopping();
-        displayPrice(quantity, message);
+        name = getName();
+        orderSummary = orderSummary(quantity, message);
+        email = "admin@cmadvocates.co.tz";
+        subject = "Order Summary From "+name;
+        mail = name + " "+orderSummary;
+        Log.w("MainActivity",subject);
+        Log.w("MainActivity",mail);
 
-        Log.i("MainActivity",message);
-
+        Intent sendOrder = new Intent(Intent.ACTION_SENDTO);
+        sendOrder.setData(Uri.parse("mailto:")); //only email apps should respond to this call.
+        sendOrder.putExtra(Intent.EXTRA_EMAIL,"admin@cmadvocates.co.tz");
+        sendOrder.putExtra(Intent.EXTRA_SUBJECT,subject);
+        sendOrder.putExtra(Intent.EXTRA_TEXT,mail);
+if (sendOrder.resolveActivity(getPackageManager())!=null && orderSummary!=null){
+    startActivity(sendOrder);
+}
+else if (orderSummary==null){
+    Toast.makeText(this,"Make an order",Toast.LENGTH_SHORT).show();
+}
+        else{
+            Toast.makeText(this,"Activity not found",Toast.LENGTH_SHORT).show();
+}
     }
 
     //the price method is declared here
     @SuppressLint("SetTextI18n")
-    private void displayPrice(int unit, String additions){
+    private String orderSummary(int unit, String additions){
 
         //the line below captures a textview that is to be affected by using findViewById
         TextView price = findViewById(R.id.price);
         //the below line is used to write to the text view through the object
         if (unit>0) {
-            price.setText("You have ordered: " + unit + " cups \n" + "Total Price is: " + NumberFormat.getCurrencyInstance().format(unitPrice * unit) + "\n" + additions + "\n"+ "Thank you!");
+            String message;
+            message = " have ordered: " + unit + " cup(s) \n" + "Total Price is: " + NumberFormat.getCurrencyInstance().format(unitPrice * unit) + "\n" + additions + "\n"+ "Thank you!";
+            price.setText("Order placed");
+            return message;
         }
         else{
             price.setText("Please make your order");
+            return null;
         }
+
     }
 
     private int increase(){
-        return currentOrderSize+=1;
-
+        if(quantity>=100){
+            return 100;
+        }
+        else {
+            return currentOrderSize += 1;
+        }
     }
     private int decrease(){
         if(quantity<=0){
@@ -86,18 +120,18 @@ public class MainActivity extends AppCompatActivity {
     }
 public String setTopping(){
         if (hasWhippedCream() && hasChocolate()){
-            unitPrice = 10;
+            unitPrice = 8;
             return "Topping chosen is: Whipped Cream & Chocolate";
         }
 
 
     else if(hasChocolate()){
-            unitPrice =8;
+            unitPrice =7;
             return "Topping is: Chocolate";
         }
 
         else if (hasWhippedCream()){
-            unitPrice = 7;
+            unitPrice = 6;
             return "Topping chosen is: whipped cream";
         }
     else{
@@ -108,15 +142,18 @@ public String setTopping(){
 }
 
     private boolean hasChocolate() {
-        CheckBox choco = (CheckBox) findViewById(R.id.choco);
+        CheckBox choco = findViewById(R.id.choco);
         return choco.isChecked();
     }
 
     private boolean hasWhippedCream() {
-        CheckBox whippedCream = (CheckBox) findViewById(R.id.whippedCream);
+        CheckBox whippedCream = findViewById(R.id.whippedCream);
         return whippedCream.isChecked();
     }
 
-
+private String getName(){
+    EditText name = findViewById(R.id.enteredName);
+    return name.getText().toString();
+}
 }
 

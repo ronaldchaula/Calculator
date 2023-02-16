@@ -1,33 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+<LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
    >
 
-    <TextView
+    <ImageView
         android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/title"
-        android:textAllCaps="false"
-        android:textSize="36sp"
-        android:textAlignment="center"
-       android:textStyle="italic"
-        android:textColor="@color/teal_200"
-        android:layout_marginTop="16dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/java"
+        android:contentDescription="@string/java_logo"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
          />
     <!--this is an embedded XML that create a horizontal layout-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop = "10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:text="@string/nameLabel"
+        android:labelFor="@id/enteredName"/>
+
+    <EditText
+       android:id="@+id/enteredName"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginStart="16dp"
+       android:layout_marginEnd = "16dp"
+       android:layout_marginTop="10dp"
+       android:inputType="text"
+       android:hint="@string/exampleName"
+        android:autofillHints="enter your name here"
+        tools:ignore="LabelFor" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="10dp"
+
         android:text="@string/toppingLabel"
-        android:textSize="19sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:labelFor="@id/quantity"
         />
@@ -36,6 +59,7 @@
             android:id="@+id/whippedCream"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="@string/whipped_cream"
             android:textSize="20sp"
             android:layout_marginStart="15dp"
@@ -59,8 +83,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
         android:layout_gravity="center"
         >
@@ -83,6 +106,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
+            android:gravity="center"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:text="@string/quantityValue"
@@ -103,22 +127,22 @@
             android:onClick="increaseOrder"
             />
     </LinearLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/priceLabel"
-        android:textSize="19sp"
-        android:textStyle="bold"
-        android:labelFor="@id/price"
-        />
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="25dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:text="@string/priceLabel"-->
+<!--        android:textSize="19sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:labelFor="@id/price"-->
+<!--        />-->
     <TextView
         android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:text="@string/price"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -127,7 +151,8 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_marginStart="22dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/order"
         android:onClick = "submitOrder"
         />
@@ -135,3 +160,4 @@
 
 
 </LinearLayout>
+</ScrollView>

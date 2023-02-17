@@ -67,6 +67,8 @@ else if (orderSummary==null){
 }
     }
 
+
+
     //the price method is declared here
     @SuppressLint("SetTextI18n")
     private String orderSummary(int unit, String additions){

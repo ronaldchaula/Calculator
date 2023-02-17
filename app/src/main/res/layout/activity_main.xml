@@ -115,6 +115,7 @@
             />
 
         <Button
+
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:text="@string/plus"
@@ -146,6 +147,7 @@
         android:text="@string/price"
         android:textSize="18sp"
         android:textStyle="bold"
+
         />
     <Button
         android:layout_height="wrap_content"
